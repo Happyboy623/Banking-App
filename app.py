@@ -59,7 +59,7 @@ while True:
                 print("Your balance is added to customer system")
                 print("----New account created successfully !----")
                 print("\n")
-                print("Your name is avalilable on the customers list now : ")
+                print("Your name is available on the customers list now : ")
                 print(customerNames)
                 print("\n")
                 print("Note! Please remember the Name and Pin")
