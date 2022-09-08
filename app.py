@@ -41,9 +41,8 @@ while True:
                 pin = str(input("Please input a pin of your choice : "))
                 customerPins.append(pin)
                 balance = 0
-                deposition = eval(
-                    input("Please input a value to deposit to start an account : "))
-                balance = balance + deposition
+                deposition = eval(input("Please input a value to deposit to start an account : "))
+                balance += deposition
                 customerBalances.append(balance)
                 print("\nName=", end=" ")
                 print(customerNames[counter_2])
@@ -52,7 +51,7 @@ while True:
                 print("Balance=", end=" ")
                 print(customerBalances[counter_2], end=" ")
                 print("-/Rs")
-                counter_1 = counter_1 + 1
+                counter_1 += 1
                 counter_2 = counter_2 + 1
                 print("\nYour name is added to customers system")
                 print("Your pin is added to customer system")
@@ -64,8 +63,7 @@ while True:
                 print("\n")
                 print("Note! Please remember the Name and Pin")
 
-        mainMenu = input(
-            "Please press enter key to go back to main menu to perform another function or exit ...")
+        mainMenu = input("Please press enter key to go back to main menu to perform another function or exit ...")
     elif choiceNumber == "2":
         j = 0
         print("Choice number 2 is selected by the customer")
@@ -76,50 +74,47 @@ while True:
             pin = input("Please input pin : ")
 
             while k < len(customerNames) - 1:
-                k = k + 1
+                k += 1
 
-                if name == customerNames[k]:
-                    if pin == customerPins[k]:
-                        j = j + 1
+                if name == customerNames[k] and pin == customerPins[k]:
+                    j = j + 1
 
+                    print("Your Current Balance:", end=" ")
+                    print(customerBalances[k], end=" ")
+                    print("-/Rs\n")
+                    balance = (customerBalances[k])
+
+                    withdrawal = eval(input("Input value to Withdraw : "))
+
+                    if withdrawal > balance:
+
+                        deposition = eval(input("Please Deposit a higher Value because your Balance mentioned above is not enough : "))
+
+                        balance = balance + deposition
                         print("Your Current Balance:", end=" ")
-                        print(customerBalances[k], end=" ")
+                        print(balance, end=" ")
                         print("-/Rs\n")
-                        balance = (customerBalances[k])
+                        balance = balance - withdrawal
+                        print("-\n")
+                        print("----Withdrawal Successful!----")
+                        customerBalances[k] = balance
+                        print("Your New Balance: ", balance, end=" ")
+                        print("-/Rs\n\n")
+                    else:
 
-                        withdrawal = eval(input("Input value to Withdraw : "))
+                        balance = balance - withdrawal
 
-                        if withdrawal > balance:
-
-                            deposition = eval(input(
-                                "Please Deposit a higher Value because your Balance mentioned above is not enough : "))
-
-                            balance = balance + deposition
-                            print("Your Current Balance:", end=" ")
-                            print(balance, end=" ")
-                            print("-/Rs\n")
-                            balance = balance - withdrawal
-                            print("-\n")
-                            print("----Withdraw Successfull!----")
-                            customerBalances[k] = balance
-                            print("Your New Balance: ", balance, end=" ")
-                            print("-/Rs\n\n")
-                        else:
-
-                            balance = balance - withdrawal
-
-                            print("\n")
-                            print("----Withdraw Successfull!----")
-                            customerBalances[k] = balance
-                            print("Your New Balance: ", balance, end=" ")
-                            print("-/Rs\n\n")
+                    print("\n")
+                    print("----Withdrawal Successful!----")
+                    customerBalances[k] = balance
+                    print("Your New Balance: ", balance, end=" ")
+                    print("-/Rs\n\n")
             if j < 1:
 
                 print("Your name and pin does not match!\n")
                 break
 
-        mainMenu = input(
-            "Please press enter key to go back to main menu to perform another function or exit ...")
+        mainMenu = input("Please press enter key to go back to main menu to perform another function or exit ...")
     elif choiceNumber == "3":
         print("Choice number 3 is selected by the customer")
         n = 0
@@ -130,10 +125,9 @@ while True:
             pin = input("Please input pin : ")
 
             while k < len(customerNames) - 1:
-                k = k + 1
+                k += 1
 
-                if name == customerNames[k]:
-                    if pin == customerPins[k]:
+                if name == customerNames[k] and pin == customerPins[k]:
                         n = n + 1
 
                         print("Your Current Balance: ", end=" ")
@@ -153,8 +147,7 @@ while True:
                 print("Your name and pin does not match!\n")
                 break
 
-        mainMenu = input(
-            "Please press enter key to go back to main menu to perform another function or exit ...")
+        mainMenu = input("Please press enter key to go back to main menu to perform another function or exit ...")
     elif choiceNumber == "4":
         print("Choice number 4 is selected by the customer")
         k = 0
@@ -166,10 +159,9 @@ while True:
             print("->.Balance =", customerBalances[k], end=" ")
             print("-/R")
             print("\n")
-            k = k + 1
+            k += 1
 
-        mainMenu = input(
-            "Please press enter key to go back to main menu to perform another fuction or exit ...")
+        mainMenu = input("Please press enter key to go back to main menu to perform another fuction or exit ...")
     elif choiceNumber == "5":
 
         print("Choice number 5 is selected by the customer")
@@ -183,5 +175,4 @@ while True:
         print("Invalid option selected by the customer")
         print("Please Try again!")
 
-        mainMenu = input(
-            "Please press enter key to go back to main menu to perform another function or exit ...")
+        mainMenu = input("Please press enter key to go back to main menu to perform another function or exit ...")
